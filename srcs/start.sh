@@ -7,4 +7,5 @@ chmod +x mkcert
 ./mkcert localhost
 
 service nginx restart
+/etc/init.d/php7.3-fpm start
 tail -f /dev/null
