@@ -5,7 +5,7 @@ MAINTAINER Sebastien Labelle <slabelle@student.42.fr>
 
 # [ Copy config/script files to image ]
 COPY srcs/nginx.conf /etc/nginx/sites-available/localhost
-COPY srcs/config.inc.php /var/www/html/
+COPY srcs/config.inc.php /var/www/
 COPY srcs/start.sh .
 
 # [ Install packages ]
@@ -26,9 +26,9 @@ RUN rm /etc/nginx/sites-enabled/default
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-english.tar.gz
 RUN tar -xvzf phpMyAdmin-4.9.0.1-english.tar.gz
 RUN rm phpMyAdmin-4.9.0.1-english.tar.gz
-RUN mv phpMyAdmin-4.9.0.1-english /var/www/html/phpmyadmin
-RUN mv /var/www/html/config.inc.php /var/www/html/phpmyadmin/
-RUN rm /var/www/html/phpmyadmin/config.sample.inc.php
+RUN mv phpMyAdmin-4.9.0.1-english /var/www/phpmyadmin
+RUN mv /var/www/config.inc.php /var/www/phpmyadmin/
+RUN rm /var/www/phpmyadmin/config.sample.inc.php
 
 # [ Allow user ]
 RUN chown -R www-data:www-data /var/www/*
