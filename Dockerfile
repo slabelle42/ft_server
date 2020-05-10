@@ -29,6 +29,12 @@ RUN rm phpMyAdmin-4.9.0.1-english.tar.gz
 RUN mv phpMyAdmin-4.9.0.1-english /var/www/phpmyadmin
 RUN mv /var/www/config.inc.php /var/www/phpmyadmin/
 RUN rm /var/www/phpmyadmin/config.sample.inc.php
+RUN mkdir -p /var/lib/phpmyadmin/tmp
+RUN chown -R www-data:www-data /var/lib/phpmyadmin
+
+# [ Allow user ]
+RUN chown -R www-data:www-data /var/www/*
+RUN chmod -R 755 /var/www/*
 
 # [ Start! ]
 CMD bash start.sh
