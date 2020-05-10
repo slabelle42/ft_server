@@ -5,7 +5,7 @@ MAINTAINER Sebastien Labelle <slabelle@student.42.fr>
 
 # [ Copy config/script files to image ]
 COPY srcs/nginx.conf /etc/nginx/sites-available/localhost
-COPY srcs/wp-config.php /var/www/
+COPY srcs/config.inc.php /var/www/
 COPY srcs/start.sh .
 
 # [ Install packages ]
