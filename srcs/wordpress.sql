@@ -433,7 +433,7 @@ CREATE TABLE `wp_users` (
 --
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
-(1, 'slabelle', '$P$BfkKl9RdFP5I816QGAJSPnLZIUBGhd1', 'slabelle', 'slabelle@student.42.fr', '', '2020-05-10 23:00:03', '', 0, 'slabelle');
+(1, 'root', '63a9f0ea7bb98050796b649e85481845', 'root', 'root@student.42.fr', '', '2020-05-10 23:00:03', '', 0, 'root');
 
 --
 -- Indexes for dumped tables
