@@ -15,14 +15,9 @@ RUN apt-get -y install nginx
 RUN apt-get -y install wget
 RUN apt-get -y install vim
 
-# [ SSL certificate generation ]
-RUN mkdir ~/mkcert
-RUN cd ~/mkcert
-RUN wget https://github.com/FiloSottile/mkcert/releases/download/v1.1.2/mkcert-v1.1.2-linux-amd64
-RUN mv mkcert-v1.1.2-linux-amd64 mkcert
-RUN chmod +x mkcert
-RUN ./mkcert -install
-RUN ./mkcert localhost
+# [ Nginx configuration ]
+RUN ln -s /etc/nginx/sites-available/localhost /etc/nginx/sites-enabled/
+RUN rm /etc/nginx/sites-enabled/default
 
 # [ Start! ]
 CMD bash start.sh
