@@ -22,22 +22,23 @@ RUN rm /etc/nginx/sites-enabled/default
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-english.tar.gz
 RUN tar -xvzf phpMyAdmin-4.9.0.1-english.tar.gz
 RUN rm phpMyAdmin-4.9.0.1-english.tar.gz
-RUN mv phpMyAdmin-4.9.0.1-english /var/www/html/phpmyadmin
-COPY srcs/config.inc.php /var/www/html/phpmyadmin/
-RUN rm /var/www/html/phpmyadmin/config.sample.inc.php
+RUN mv phpMyAdmin-4.9.0.1-english /var/www/phpmyadmin
+COPY srcs/config.inc.php /var/www/phpmyadmin/
+RUN rm /var/www/phpmyadmin/config.sample.inc.php
 
 # [ WordPress (website) configuration ]
 RUN wget https://wordpress.org/latest.tar.gz
 RUN tar -xvzf latest.tar.gz
 RUN rm latest.tar.gz
-RUN mv wordpress /var/www/html/
-COPY srcs/wp-config.php /var/www/html/wordpress/
-RUN rm /var/www/html/wordpress/wp-config-sample.php
-COPY srcs/wordpress.sql /var/www/html/
+RUN mv wordpress /var/www/
+COPY srcs/wp-config.php /var/www/wordpress/
+RUN rm /var/www/wordpress/wp-config-sample.php
+RUN mv /var/www/phpmyadmin /var/www/wordpress/
+COPY srcs/wordpress.sql /var/www/
 
 # [ Allow user ]
-RUN chown -R www-data:www-data /var/www/html/*
-RUN chmod -R 755 /var/www/html/*
+RUN chown -R www-data:www-data /var/www/*
+RUN chmod -R 755 /var/www/*
 
 # [ Start! ]
 COPY srcs/start.sh .
