@@ -32,8 +32,8 @@ RUN tar -xvzf latest.tar.gz
 RUN rm latest.tar.gz
 RUN mv wordpress /var/www/html/
 COPY srcs/wp-config.php /var/www/html/wordpress/
-COPY srcs/wordpress.sql /var/www/html/wordpress/
 RUN rm /var/www/html/wordpress/wp-config-sample.php
+COPY srcs/wordpress.sql /var/www/html/
 
 # [ Allow user ]
 RUN chown -R www-data:www-data /var/www/html/*
