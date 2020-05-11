@@ -23,17 +23,17 @@ RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-engl
 RUN tar -xvzf phpMyAdmin-4.9.0.1-english.tar.gz
 RUN rm phpMyAdmin-4.9.0.1-english.tar.gz
 RUN mv phpMyAdmin-4.9.0.1-english /var/www/html/phpmyadmin
-RUN rm /var/www/html/phpmyadmin/config.sample.inc.php
 COPY srcs/config.inc.php /var/www/html/phpmyadmin/
+RUN rm /var/www/html/phpmyadmin/config.sample.inc.php
 
 # [ WordPress (website) configuration ]
 RUN wget https://wordpress.org/latest.tar.gz
 RUN tar -xvzf latest.tar.gz
 RUN rm latest.tar.gz
 RUN mv wordpress /var/www/html/
-RUN rm /var/www/html/wordpress/wp-config-sample.php
 COPY srcs/wp-config.php /var/www/html/wordpress/
 COPY srcs/wordpress.sql /var/www/html/wordpress/
+RUN rm /var/www/html/wordpress/wp-config-sample.php
 
 # [ Allow user ]
 RUN chown -R www-data:www-data /var/www/html/*
